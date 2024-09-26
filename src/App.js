@@ -3,13 +3,18 @@ import './App.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import FriendRequests from './components/FriendRequests';
+
 function App() {
+
   return (
     <>
+     
       <Routes>
         <Route path='/' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/friend-requests' element={<FriendRequests />} />
       </Routes>
     </>
   );
