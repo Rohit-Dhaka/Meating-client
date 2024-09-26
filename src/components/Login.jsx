@@ -9,12 +9,11 @@ const Login = () => {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:4000/user/login', { email, password });
-            const userId = response.data.userId; // Assuming userId is returned by the backend
+            const userId = response.data.userId; 
             localStorage.setItem('currentUserId', userId);
             setMessage(response.data);
             navigate('/home');
@@ -27,22 +26,6 @@ const Login = () => {
         }
     };
     
-
-    // const handleLogin = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await axios.post('http://localhost:4000/user/login', { email, password });
-    //         setMessage(response.data);
-    //         navigate('/home');
-    //     } catch (err) {
-    //         if (err.response && err.response.data) {
-    //             setMessage(err.response.data);
-    //         } else {
-    //             setMessage("Please try again");
-    //         }
-    //     }
-    // };
-
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-yellow-400 via-red-500 to-pink-600 font-poppins">
             <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-md w-80">
