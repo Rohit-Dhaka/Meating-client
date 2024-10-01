@@ -1,3 +1,4 @@
+
 // Signup.js
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -24,9 +25,8 @@ const Signup = () => {
             }
         }
     };
-
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 font-poppins">
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 font-poppins">
             <form onSubmit={handleSignup} className="bg-white p-8 rounded-lg shadow-md w-80">
                 <h2 className="text-2xl font-semibold text-center mb-4">Signup</h2>
                 <div className="mb-3">
@@ -73,5 +73,4 @@ const Signup = () => {
         </div>
     );
 };
-
 export default Signup;

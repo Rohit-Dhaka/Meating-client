@@ -9,11 +9,13 @@ const FriendRequests = () => {
             if (!currentUserId) return;
             try {
                 const response = await axios.get(`http://localhost:4000/user/${currentUserId}/friend-requests`);
+                console.log('Fetched friend requests:', response.data); // Log the response
                 setRequests(response.data);
             } catch (err) {
                 console.error('Error fetching friend requests:', err);
             }
         };
+        
         fetchFriendRequests();
     }, [currentUserId]);
 
@@ -24,11 +26,14 @@ const FriendRequests = () => {
                 senderId,
             });
             alert('Friend request accepted!');
+            
+            // Update the requests state to remove the accepted friend request
             setRequests(requests.filter((req) => req._id !== senderId));
         } catch (err) {
             console.error('Error accepting friend request:', err);
         }
     };
+    
 
     return (
         <div className=" bg-gray-100 font-poppins p-4">
@@ -54,6 +59,7 @@ const FriendRequests = () => {
                     </ul>
                 )}
             </div>
+            
         </div>
     );
 };

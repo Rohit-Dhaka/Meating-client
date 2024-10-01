@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [users, setUsers] = useState([]);
-    const [currentUserId, setCurrentUserId] = useState(null); 
-        
+    const [currentUserId, setCurrentUserId] = useState(null);
 
-    useEffect(() => {        
-        const userId = localStorage.getItem("currentUserId"); 
+
+    useEffect(() => {
+        const userId = localStorage.getItem("currentUserId");
         setCurrentUserId(userId);
 
         const fetchUsers = async () => {
@@ -33,15 +33,21 @@ const Home = () => {
                 receiverId,
             });
             alert('Friend request sent!');
+    
+            // Optionally, you can trigger a refresh of the friend requests here if needed.
+            // This may not be necessary if you're already fetching them in the FriendRequests component
+            // but ensure your UI stays in sync.
         } catch (err) {
             console.error('Error sending friend request:', err);
             alert('Error sending friend request.');
         }
     };
+    
+    
     return (
         <div className="min-h-screen bg-gray-100 font-poppins p-4">
-            <Link to='/friend-requests'>FriendRequests </Link>            
-        
+            <Link to='/friend-requests'>FriendRequests </Link>
+
             <h2 className="text-2xl font-semibold mb-4">All Users</h2>
             <div className="bg-white p-4 rounded-lg shadow-md">
                 <ul>
@@ -60,13 +66,6 @@ const Home = () => {
                     ))}
                 </ul>
             </div>
-
-
-
-
-
-
-
         </div>
     );
 };
