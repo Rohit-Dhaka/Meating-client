@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
 const Chat = () => {
     const { friendId } = useParams();
     const currentUserId = localStorage.getItem("currentUserId");
-    const currentUserName = localStorage.getItem("currentUserName"); // Assuming you store the user's name in localStorage
+    const currentUserName = localStorage.getItem("currentUserName"); 
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-
     useEffect(() => {
         const fetchMessages = async () => {
             try {
@@ -20,16 +18,12 @@ const Chat = () => {
         };
         fetchMessages();
     }, [currentUserId, friendId]);
-
-
-    
-
     const sendMessage = async () => {
         if (!message.trim()) return;
         try {
             await axios.post('http://localhost:4000/chat/send', {
                 senderId: currentUserId,
-                senderName: currentUserName, // Include the sender's name
+                senderName: currentUserName, 
                 receiverId: friendId,
                 message,
             });
@@ -39,7 +33,6 @@ const Chat = () => {
             console.error('Error sending message:', err);
         }
     };
-
     return (
         <div className="min-h-screen bg-gray-100 font-poppins p-4">
             <h2 className="text-2xl font-semibold mb-4">Chat with Friend</h2>
@@ -68,5 +61,4 @@ const Chat = () => {
         </div>
     );
 };
-
 export default Chat;

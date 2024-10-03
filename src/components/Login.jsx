@@ -1,43 +1,32 @@
-// Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
-    const { setUserName } = useUser(); // Get setUserName from context
-
+    const { setUserName } = useUser(); 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:4000/user/login', { email, password });
             const userId = response.data.userId; 
-            localStorage.setItem('currentUserId', userId);
-    
-            // Fetch the user's name after successful login
+            localStorage.setItem('currentUserId', userId);                
             const userResponse = await axios.get(`http://localhost:4000/user/${userId}`);
-            setUserName(userResponse.data.name); // Set username in context
-    
+            setUserName(userResponse.data.name);     
             setMessage("User logged in successfully");
             navigate('/home');
         } catch (err) {
-            console.error("Login error:", err); // Log the error
+            console.error("Login error:", err); 
             if (err.response && err.response.data) {
                 setMessage(err.response.data.message);
             } else {
                 setMessage("Please try again");
             }
         }
-    };
-    
-
-
-      
-    
+    };              
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 font-poppins">
             <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-md w-80">
@@ -76,6 +65,5 @@ const Login = () => {
         </div>
     );
 };
-
 export default Login;
 

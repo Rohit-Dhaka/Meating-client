@@ -1,4 +1,4 @@
-// App.js
+
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
@@ -6,7 +6,7 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import FriendRequests from './components/FriendRequests';
 import Navbar from './components/Navbar';
-import { UserProvider } from './context/UserContext'; // Import UserProvider
+import { UserProvider } from './context/UserContext'; 
 import Chat from './components/Chat';
 
 
