@@ -8,7 +8,7 @@ const FriendRequests = () => {
         const fetchFriendRequests = async () => {
             if (!currentUserId) return;
             try {
-                const response = await axios.get(`http://localhost:4000/user/${currentUserId}/friend-requests`);
+                const response = await axios.get(`https://meating-backend-code.onrender.com/user/${currentUserId}/friend-requests`);
                 console.log('Fetched friend requests:', response.data); 
                 setRequests(response.data);
             } catch (err) {
@@ -18,7 +18,7 @@ const FriendRequests = () => {
         fetchFriendRequests();
     }, [currentUserId]);
     const acceptRequest = async (senderId) => {
-        try {
+        try {   
             await axios.post('http://localhost:4000/user/accept-friend-request', {
                 userId: currentUserId,
                 senderId,
@@ -32,7 +32,7 @@ const FriendRequests = () => {
     return (
         <div className=" bg-gray-100 font-poppins p-4">
             <Link to='/home'>Home </Link>              
-            <h2 className="text-2xl font-semibold mb-4">Friend Requests</h2>
+            <h2 className="text-2xl font-semibold mb-4">Friend Requests</h2>    
             <div className="bg-white p-4 rounded-lg shadow-md">
                 {requests.length === 0 ? (
                     <p>No friend requests</p>

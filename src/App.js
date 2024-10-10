@@ -10,19 +10,18 @@ import { UserProvider } from './context/UserContext';
 import Chat from './components/Chat';
 
 
+
 function App() {
   return (
-    <UserProvider>
+
+    <UserProvider>      
       <Navbar />
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/friend-requests" element={<FriendRequests />} />
-        <Route path="/chat/:friendId" element={<Chat />} />
-        
-
-
+        <Route path="/chat/:friendId" element={<Chat />} />        
       </Routes>
     </UserProvider>
   );

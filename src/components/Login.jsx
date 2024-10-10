@@ -11,10 +11,10 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/user/login', { email, password });
+            const response = await axios.post('https://meating-backend-code.onrender.com/user/login', { email, password });
             const userId = response.data.userId; 
             localStorage.setItem('currentUserId', userId);                
-            const userResponse = await axios.get(`http://localhost:4000/user/${userId}`);
+            const userResponse = await axios.get(`https://meating-backend-code.onrender.com/user/${userId}`);
             setUserName(userResponse.data.name);     
             setMessage("User logged in successfully");
             navigate('/home');

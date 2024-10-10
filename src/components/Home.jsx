@@ -9,7 +9,7 @@ const Home = () => {
         setCurrentUserId(userId);
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/alluser');
+                const response = await axios.get('https://meating-backend-code.onrender.com/alluser');
                 setUsers(response.data);
             } catch (err) {
                 console.error('Error fetching users:', err);

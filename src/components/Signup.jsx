@@ -11,7 +11,7 @@ const Signup = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/user/signup', { name, email, password });
+            const response = await axios.post('https://meating-backend-code.onrender.com/user/signup', { name, email, password });
             setMessage(response.data);
             navigate('/login');
         } catch (err) {
